@@ -23,14 +23,23 @@ namespace api_server.Controllers
             _service = service; 
         }
 
-        [HttpGet]
-        public IEnumerable<Deal> Get()
+        // POST: api/deals
+        [HttpPost]
+        public ActionResult<List<Deal>> PostAutoDeals([FromBody] string path)
         {
-             _service.LoadCsvFile("C:\\Users\\neegarg2\\Desktop\\Neha\\job hunt\\cox-auto\\cox-automotives\\Dealertrack-CSV-Example.csv");
+            //C:\\Users\\neegarg2\\Desktop\\Neha\\job hunt\\cox-auto\\cox-automotives\\Dealertrack-CSV-Example.csv 
+            _service.LoadCsvFile(path);
+            return CreatedAtAction(nameof(PostAutoDeals), _service.getAllDeals(), path);
+        }
+
+        [HttpGet]
+        public ActionResult<List<Deal>> getAutoDeals()
+        {
             return _service.getAllDeals();
         }
 
-        [HttpGet("top")]
+        // GET: api/deals/top-vehicles
+        [HttpGet("top-vehicles")]
         public Object GetTopDeals()
         {
             return _service.EvaluateTopSellingCars();

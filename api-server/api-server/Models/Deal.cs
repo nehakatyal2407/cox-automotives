@@ -8,6 +8,7 @@ namespace api_server.Models
     public class Deal
     {
         [Required]
+        [Key]
         public int DealNumber { set; get; }
         [Required]
         public string CustomerName { set; get; }

@@ -15,24 +15,25 @@ namespace api_server.Controllers
     public class DealsController : ControllerBase
     {
         private readonly ILogger<DealsController> _logger;
+        private readonly IDataService _service;
 
-        public DealsController(ILogger<DealsController> logger)
+        public DealsController(ILogger<DealsController> logger, IDataService service)
         {
             _logger = logger;
+            _service = service; 
         }
 
         [HttpGet]
         public IEnumerable<Deal> Get()
         {
-            IExcelService ex = new ExcelService();
-            return ex.LoadCsvFile("C:\\Users\\neegarg2\\Desktop\\Neha\\job hunt\\cox\\Dealertrack-CSV-Example.csv").ToArray();
+             _service.LoadCsvFile("C:\\Users\\neegarg2\\Desktop\\Neha\\job hunt\\cox-auto\\cox-automotives\\Dealertrack-CSV-Example.csv");
+            return _service.getAllDeals();
         }
 
         [HttpGet("top")]
         public Object GetTopDeals()
         {
-            IExcelService ex = new ExcelService();
-            return ex.EvaluateTopSellingCars();
+            return _service.EvaluateTopSellingCars();
         }
     }
 }

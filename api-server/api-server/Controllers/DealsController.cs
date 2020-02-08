@@ -27,13 +27,13 @@ namespace api_server.Controllers
         [HttpPost]
         public ActionResult<List<Deal>> PostAutoDeals([FromBody] string path)
         {
-            //C:\\Users\\neegarg2\\Desktop\\Neha\\job hunt\\cox-auto\\cox-automotives\\Dealertrack-CSV-Example.csv 
             _service.LoadCsvFile(path);
             return CreatedAtAction(nameof(PostAutoDeals), _service.getAllDeals(), path);
         }
 
+        // GET: api/deals
         [HttpGet]
-        public ActionResult<List<Deal>> getAutoDeals()
+        public ActionResult<List<Deal>> GetAutoDeals()
         {
             return _service.getAllDeals();
         }

@@ -19,6 +19,7 @@ import {MatInputModule} from '@angular/material';
 import { TruncateModule } from 'ng2-truncate';
 import { NgRedux, NgReduxModule } from 'ng2-redux';
 import { IAppState, rootReducer, INITIAL_STATE } from './store';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { IAppState, rootReducer, INITIAL_STATE } from './store';
     TruncateModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,

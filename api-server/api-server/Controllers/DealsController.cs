@@ -30,11 +30,13 @@ namespace api_server.Controllers
         // [Consumes("application/vnd.ms-excel")]
         public ActionResult<List<Deal>> PostAutoDeals()
         {
+
             try
             {
                 var postedFile = Request.Form.Files[0];
                 if (postedFile.Length > 0)
                 {
+                    _service.flushAllData(); // Flush All data while loading new CSV File
                     _service.LoadCsvFile(postedFile);
                     return CreatedAtAction(nameof(PostAutoDeals),
                         new PostDealResponse

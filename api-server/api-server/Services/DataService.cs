@@ -7,6 +7,7 @@ using api_server.Interfaces;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using System.Text;
 
 namespace api_server.Services
 {
@@ -25,7 +26,7 @@ namespace api_server.Services
 
         public async void LoadCsvFile(IFormFile postedFile)
         {
-            using (var sr = new StreamReader(postedFile.OpenReadStream()))
+            using (var sr = new StreamReader(postedFile.OpenReadStream(), Encoding.GetEncoding("iso-8859-1")))
             {
                 string[] read;
                 sr.ReadLine();
@@ -44,6 +45,11 @@ namespace api_server.Services
 
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public void flushAllData()
+        {
+            _context.Database.EnsureDeleted();
         }
 
         public List<Deal> getAllDeals()

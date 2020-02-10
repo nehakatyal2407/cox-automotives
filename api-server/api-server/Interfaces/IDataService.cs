@@ -14,5 +14,7 @@ namespace api_server.Interfaces
         List<Deal> getAllDeals();
 
         object EvaluateTopSellingCars();
+
+        void flushAllData();
     }
 }

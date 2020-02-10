@@ -44,9 +44,9 @@ namespace api_server
                 app.UseDeveloperExceptionPage();
             }
 
-            // app.UseHttpsRedirection();
-
             app.UseRouting();
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthorization();
 
@@ -55,6 +55,7 @@ namespace api_server
                 endpoints.MapControllers();
                 endpoints.MapHealthChecks("/health");
             });
+
         }
     }
 }

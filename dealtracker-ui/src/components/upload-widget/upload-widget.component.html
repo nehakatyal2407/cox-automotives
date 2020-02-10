@@ -1,1 +1,10 @@
-<div>Upload widget</div>
+<div class="upload-widget">
+    <div>
+        <label>Select File and Click Upload Button</label>
+    </div>
+    <form class="file-container">
+
+        <input type="file" accept=".csv" (change)="FilePathHandler($event)" id="file-upload" class="input-file-upload">
+        <button (click)="uploadData()" class="upload-button">Upload Data</button>
+    </form>
+</div>

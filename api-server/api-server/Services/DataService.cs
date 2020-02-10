@@ -6,6 +6,7 @@ using api_server.Util;
 using api_server.Interfaces;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace api_server.Services
 {
@@ -22,9 +23,9 @@ namespace api_server.Services
         }
 
 
-        public async void LoadCsvFile(string filePath)
+        public async void LoadCsvFile(IFormFile postedFile)
         {
-            using (StreamReader sr = new StreamReader(filePath))
+            using (var sr = new StreamReader(postedFile.OpenReadStream()))
             {
                 string[] read;
                 sr.ReadLine();
@@ -32,7 +33,13 @@ namespace api_server.Services
                 {
                     string line = sr.ReadLine();
                     read = CSVLineProcessor.parseLine(line);
-                    _context.Add(CreateDealInstance(read));
+                    Deal dealtobeUploaded = CreateDealInstance(read);
+                    Deal deal = await _context.Deals.FindAsync(dealtobeUploaded.DealNumber);
+                    if(deal == null)
+                    {
+                        _context.Add(dealtobeUploaded);
+                    }
+                    
                 }
 
                 await _context.SaveChangesAsync();
@@ -51,11 +58,10 @@ namespace api_server.Services
                 .AsEnumerable()
                 .GroupBy(x => x.Vehicle)
                 .OrderByDescending(x => x.Count())
-                .Take(2)
+                .Take(4)
                 .Select(group => new
                 {
-                    name = group.Key,
-                    cars = group.ToList()
+                    name = group.Key
                 })
                 .ToList();
         }

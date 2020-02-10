@@ -1,11 +1,9 @@
 <style>
   .content {
     display: flex;
-    margin: 32px auto;
+    margin: 10px auto;
     padding: 0 16px;
-    max-width: 960px;
     flex-direction: column;
-    align-items: center;
   }
 
   svg.material-icons {
@@ -17,14 +15,16 @@
     margin-right: 8px;
   }
 
+  table {
+    width: 100%;
+  }
+
 </style>
 
 <!-- Toolbar -->
 <app-header></app-header>
 <div class="content" role="main">
   <upload-widget></upload-widget>
-  <vehicle-card></vehicle-card>
   <data-grid></data-grid>
 </div>
-<app-footer></app-footer>
 <router-outlet></router-outlet>

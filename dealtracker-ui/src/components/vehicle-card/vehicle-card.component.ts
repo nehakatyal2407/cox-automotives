@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgRedux, select } from 'ng2-redux';
+import { IAppState } from 'src/app/store';
 
 @Component({
   selector: 'vehicle-card',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./vehicle-card.component.scss']
 })
 export class VehicleCard {
-  title = 'Header';
+  deals: string[];
+  constructor(private ngredux: NgRedux<IAppState>){
+    ngredux.subscribe(() => {
+      this.deals = ngredux.getState().TopDeals;
+    });
+  }
+
 }

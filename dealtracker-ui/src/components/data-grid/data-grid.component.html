@@ -1,1 +1,58 @@
-Data Grid
+<div>
+    <div class="vehicle-card-container">
+        <vehicle-card></vehicle-card>
+    </div>
+    <div class="mat-elevation-z8" *ngIf="deals && deals.length > 0; else elseBlock">
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filter Records by Deal Number, Customer Name, Dealership Name and so on ...">
+        </mat-form-field>
+
+        <table mat-table matSort [dataSource]="dataSource" class="table-container">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="dealNumber">
+                <th mat-header-cell *matHeaderCellDef> Deal Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.dealNumber}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="customerName">
+                <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="dealershipName">
+                <th mat-header-cell *matHeaderCellDef> Dealership Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.dealershipName}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="vehicle">
+                <th mat-header-cell *matHeaderCellDef> Vehicle </th>
+                <td mat-cell *matCellDef="let element"> {{element.vehicle}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <ng-template #elseBlock>
+        <div class="data-message-container">
+            <img class="data-message" src="./../../assets/2023155.png">
+        </div>
+    </ng-template>
+</div>

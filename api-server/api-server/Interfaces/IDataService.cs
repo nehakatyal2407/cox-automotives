@@ -1,4 +1,5 @@
 ﻿using api_server.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,10 @@ namespace api_server.Interfaces
 {
     public interface IDataService
     {
-        void LoadCsvFile(string filePath);
+        void LoadCsvFile(IFormFile postedFile);
 
         List<Deal> getAllDeals();
 
-        Object EvaluateTopSellingCars();
+        object EvaluateTopSellingCars();
     }
 }

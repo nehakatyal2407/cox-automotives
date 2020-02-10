@@ -35,7 +35,7 @@ export class UploadWidget implements OnDestroy {
       .subscribe(
         data => this.ngredux.dispatch({ type: UPLOAD_DATA, body: data }),
         error => {
-          this.toastr.error("Server Error has Occured, Please contact Administrator");
+          this.toastr.error("Error !! Validate Input Excel File");
           this.Reset();
         },
         () => {

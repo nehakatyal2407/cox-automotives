@@ -13,25 +13,25 @@
             <!-- dealer Number Column -->
             <ng-container matColumnDef="dealNumber">
                 <th mat-header-cell *matHeaderCellDef> Deal Number </th>
-                <td mat-cell *matCellDef="let element"> {{element.dealNumber}} </td>
+                <td mat-cell *matCellDef="let element" [title]="element.dealNumber"> {{element.dealNumber | truncate : 40 : "..."}} </td>
             </ng-container>
 
             <!-- customer Name Column -->
             <ng-container matColumnDef="customerName">
                 <th mat-header-cell *matHeaderCellDef> Customer Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+                <td mat-cell *matCellDef="let element" [title]="element.customerName"> {{element.customerName | truncate : 40 : "..."}} </td>
             </ng-container>
 
             <!-- Dealership Column -->
             <ng-container matColumnDef="dealershipName">
                 <th mat-header-cell *matHeaderCellDef> Dealership Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.dealershipName}} </td>
+                <td mat-cell *matCellDef="let element" [title]="element.dealershipName"> {{element.dealershipName | truncate : 40 : "..."}} </td>
             </ng-container>
 
             <!-- Vehicle Column -->
             <ng-container matColumnDef="vehicle">
                 <th mat-header-cell *matHeaderCellDef> Vehicle </th>
-                <td mat-cell *matCellDef="let element"> {{element.vehicle}} </td>
+                <td mat-cell *matCellDef="let element" [title]="element.vehicle"> {{element.vehicle | truncate : 40 : "..."}} </td>
             </ng-container>
 
             <!-- Currency Column -->

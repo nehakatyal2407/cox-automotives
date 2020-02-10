@@ -26,25 +26,34 @@ namespace api_server.Services
 
         public async void LoadCsvFile(IFormFile postedFile)
         {
-            using (var sr = new StreamReader(postedFile.OpenReadStream(), Encoding.GetEncoding("iso-8859-1")))
+            try
             {
-                string[] read;
-                sr.ReadLine();
-                while (sr.Peek() != -1)
+                using (var sr = new StreamReader(postedFile.OpenReadStream(), Encoding.GetEncoding("iso-8859-1")))
                 {
-                    string line = sr.ReadLine();
-                    read = CSVLineProcessor.parseLine(line);
-                    Deal dealtobeUploaded = CreateDealInstance(read);
-                    Deal deal = await _context.Deals.FindAsync(dealtobeUploaded.DealNumber);
-                    if(deal == null)
+                    string[] read;
+                    sr.ReadLine();
+                    while (sr.Peek() != -1)
                     {
-                        _context.Add(dealtobeUploaded);
-                    }
-                    
-                }
+                        string line = sr.ReadLine();
+                        read = CSVLineProcessor.parseLine(line);
+                        Deal dealtobeUploaded = CreateDealInstance(read);
+                        Deal deal = await _context.Deals.FindAsync(dealtobeUploaded.DealNumber);
+                        if (deal == null)
+                        {
+                            _context.Add(dealtobeUploaded);
+                        }
 
-                await _context.SaveChangesAsync();
+                    }
+
+                    await _context.SaveChangesAsync();
+                }
             }
+            catch (Exception)
+            {
+                _logger.LogError("Exception Occured While loading data");
+                throw new DataUpLoadException("Exception Occured While loading data");
+            }
+
         }
 
         public void flushAllData()

@@ -9,6 +9,7 @@ using api_server.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Nito.AsyncEx;
 
 namespace api_server.Controllers
 {
@@ -28,7 +29,7 @@ namespace api_server.Controllers
         // POST: api/deals
         [HttpPost]
         // [Consumes("application/vnd.ms-excel")]
-        public ActionResult<List<Deal>> PostAutoDeals()
+        public  ActionResult<List<Deal>> PostAutoDeals()
         {
 
             try
@@ -36,8 +37,9 @@ namespace api_server.Controllers
                 var postedFile = Request.Form.Files[0];
                 if (postedFile.Length > 0)
                 {
-                    _service.flushAllData(); // Flush All data while loading new CSV File
-                    _service.LoadCsvFile(postedFile);
+                    AsyncContext.Run(() => _service.flushAllData()); // Flush All data while loading new CSV File
+                    AsyncContext.Run(() => _service.LoadCsvFile(postedFile));
+
                     return CreatedAtAction(nameof(PostAutoDeals),
                         new PostDealResponse
                         {

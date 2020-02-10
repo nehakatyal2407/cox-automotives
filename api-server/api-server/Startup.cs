@@ -33,7 +33,7 @@ namespace api_server
                opt.UseInMemoryDatabase("Deal"));
             services.AddControllers();
             services.AddHealthChecks();
-            services.AddScoped<IDataService, DataService>();
+            services.AddTransient<IDataService, DataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

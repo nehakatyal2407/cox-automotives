@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule  } from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import { TruncateModule } from 'ng2-truncate';
 import { NgRedux, NgReduxModule } from 'ng2-redux';
@@ -45,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatFormFieldModule,
     MatInputModule,
     NgReduxModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,8 @@
 <div class="upload-widget">
-    <div>
-        <label>Select File and Click Upload Button</label>
-    </div>
     <form class="file-container">
 
-        <input type="file" accept=".csv" (change)="FilePathHandler($event)" id="file-upload" class="input-file-upload">
-        <button (click)="uploadData()" class="upload-button">Upload Data</button>
+        <input type="file" accept=".csv" [(ngModel)]="file.path" name="file-upload" (change)="FilePathHandler($event)" id="file-upload" class="input-file-upload">
+        <button (click)="uploadData()" class="upload-button">Browse</button>
+        <button (click)="Reset()" class="upload-button ml-2">Reset</button>
     </form>
 </div>

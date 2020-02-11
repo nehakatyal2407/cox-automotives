@@ -1,9 +1,11 @@
-# cox-automotives
+# cox-automotives - Interview coding Test
 
-User Story
-Description
+# User Story
+
+# Description
 As a user, I want to be able to upload a CSV file containing vehicle sales data and visualize the data in a web browser. In addition, I would like to display the vehicle that was sold the most often. 
-Story Details
+
+# Story Details
 •	The CSV file has six columns:
 o	DealNumber (integer)
 o	CustomerName (string)
@@ -22,9 +24,10 @@ Technical requirements
 •	If desired, any front-end framework and/or library can be used 
 •	For application logic, only .NET framework is permitted. Please do not use a third-party framework for reading CSV files. 
 
-Evaluation Method
+# Evaluation Method
 We will evaluate your problem-solving skills, use of software development principles, software design expertise and exposure to programming stack of technologies, so apply these concepts to the solution (e.g. Unit Testing, Dependency Injection, usage of S.O.L.I.D principles, etc.).
-Additional Information
+
+# Additional Information
 Provide an installation guide if required. Any readable and accessible format is accepted.
 Preferably host your application on a public accessible source control such as GitHub submitting only the address or alternatively upload your application on .ZIP format to a cloud storage and share the link. 
 We are an equal opportunity employer and will consider all applicants equally.

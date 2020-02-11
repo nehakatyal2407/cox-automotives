@@ -1,8 +1,9 @@
-# cox-automotives - Interview coding Test
+# Technical Overview
+
+
 
 # User Story
 
-# Description
 As a user, I want to be able to upload a CSV file containing vehicle sales data and visualize the data in a web browser. In addition, I would like to display the vehicle that was sold the most often. 
 
 # Story Details

@@ -1,6 +1,6 @@
 # Technical Overview
 
-
+This project is build using Angular 8 and ASP.NET Core.
 
 # User Story
 

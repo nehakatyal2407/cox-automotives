@@ -19,8 +19,8 @@ export function rootReducer(state: IAppState, action): IAppState {
     switch (action.type) {
         case UPLOAD_DATA:
             return tassign(state, {
-                Deals: action.body.deals,
-                TopDeals: action.body.topDeals
+                Deals: action.body.Deals,
+                TopDeals: action.body.TopDeals
             });
         case RESET_DATA:
             return INITIAL_STATE;

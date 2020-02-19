@@ -1,3 +1,9 @@
+# Steps to start Dealtracker UI
+
+1. cd dealtracker-ui
+2. npm install
+3. ng serve
+
 # DealtrackerUi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
